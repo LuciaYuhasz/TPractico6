@@ -74,6 +74,7 @@ public class Productos extends javax.swing.JInternalFrame {
         });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.setEnabled(false);
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
@@ -177,6 +178,7 @@ public class Productos extends javax.swing.JInternalFrame {
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
     limpiar();
+    jbEliminar.setEnabled(false);
     
     }//GEN-LAST:event_jbNuevoActionPerformed
 
@@ -192,11 +194,15 @@ public class Productos extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this,"no pueden haber campos vacios");
                 return;
             }
-            Producto prod= new Producto(codigo, descripcion, precio, stock, rubro);
-            menuGeneral.lista.add(prod);
+          Producto prod= new Producto(codigo, descripcion, precio, stock, rubro);
+            boolean resu=menuGeneral.lista.add(prod);
+            if(resu){
             
             JOptionPane.showMessageDialog(this,"Producto guardado exitosamente");
             limpiar();
+       }else{
+                    JOptionPane.showMessageDialog(this,"ya exixte un producto con ese codigo");
+                    }
        }catch(NumberFormatException nfe){
            JOptionPane.showMessageDialog(this,"Verifique haber ingresado numeros");
        }
@@ -216,6 +222,8 @@ public class Productos extends javax.swing.JInternalFrame {
             jtPrecio.setText(prodEncontrado.getPrecio()+"");
             jtStock.setText(prodEncontrado.getStoock()+"");
             jcRubro.setSelectedItem(prodEncontrado.getRubro());
+            jbEliminar.setEnabled(true);
+            
             
         }else
         {JOptionPane.showMessageDialog(this,"Producto no encotrado");
@@ -229,6 +237,7 @@ if(prodEncontrado!=null){
    boolean res= menuGeneral.lista.remove(prodEncontrado);
    if(res){
     JOptionPane.showMessageDialog(this,"producto borrado");
+    limpiar();
    }
    else{
     JOptionPane.showMessageDialog(this,"no se encontro");
@@ -243,6 +252,7 @@ if(prodEncontrado!=null){
     jtPrecio.setText("");
     jtStock.setText("");
     prodEncontrado=null;
+    jbEliminar.setEnabled(false);
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

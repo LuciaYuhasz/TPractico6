@@ -28,7 +28,9 @@ public class menuGeneral extends javax.swing.JFrame {
         jmAdministracion = new javax.swing.JMenu();
         mjProductos = new javax.swing.JMenuItem();
         jmConsultas = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmPorPrecio = new javax.swing.JMenuItem();
+        jmPorNombre = new javax.swing.JMenuItem();
+        jmPorRubro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +59,29 @@ public class menuGeneral extends javax.swing.JFrame {
 
         jmConsultas.setText("Consultas");
 
-        jMenuItem2.setText("jMenuItem2");
-        jmConsultas.add(jMenuItem2);
+        jmPorPrecio.setText("Por Precio");
+        jmPorPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPorPrecioActionPerformed(evt);
+            }
+        });
+        jmConsultas.add(jmPorPrecio);
+
+        jmPorNombre.setText("Por Nombre");
+        jmPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPorNombreActionPerformed(evt);
+            }
+        });
+        jmConsultas.add(jmPorNombre);
+
+        jmPorRubro.setText("Por Rubro");
+        jmPorRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPorRubroActionPerformed(evt);
+            }
+        });
+        jmConsultas.add(jmPorRubro);
 
         jMenuBar1.add(jmConsultas);
 
@@ -89,6 +112,33 @@ public class menuGeneral extends javax.swing.JFrame {
        escritorio.moveToFront(pif);
        
     }//GEN-LAST:event_mjProductosActionPerformed
+
+    private void jmPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPorPrecioActionPerformed
+      escritorio.removeAll();
+    escritorio.repaint();
+    ConsultasPorRubro gdp=new ConsultasPorRubro();
+    gdp.setVisible(true);
+    escritorio.add(gdp);
+    escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jmPorPrecioActionPerformed
+
+    private void jmPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPorRubroActionPerformed
+    escritorio.removeAll();
+    escritorio.repaint();
+    ConsultasPorRubro gdp=new ConsultasPorRubro();
+    gdp.setVisible(true);
+    escritorio.add(gdp);
+    escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jmPorRubroActionPerformed
+
+    private void jmPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPorNombreActionPerformed
+    escritorio.removeAll();
+    escritorio.repaint();
+    ConsultasPorRubro gdp=new ConsultasPorRubro();
+    gdp.setVisible(true);
+    escritorio.add(gdp);
+    escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jmPorNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +178,11 @@ public class menuGeneral extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jmAdministracion;
     private javax.swing.JMenu jmConsultas;
+    private javax.swing.JMenuItem jmPorNombre;
+    private javax.swing.JMenuItem jmPorPrecio;
+    private javax.swing.JMenuItem jmPorRubro;
     private javax.swing.JMenuItem mjProductos;
     // End of variables declaration//GEN-END:variables
 }

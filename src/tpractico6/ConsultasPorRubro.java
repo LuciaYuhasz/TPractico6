@@ -5,17 +5,17 @@
  */
 package tpractico6;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class ConsultasPorRubro extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form ConsultasPorRubro
-     */
+private DefaultTableModel modelo= new DefaultTableModel();
     public ConsultasPorRubro() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -31,15 +31,17 @@ public class ConsultasPorRubro extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jcRubro = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProductos = new javax.swing.JTable();
+
+        setClosable(true);
 
         jLabel1.setText("Listado de Productos por Rubro");
 
         jLabel2.setText("Elige el Rubro");
 
-        jcRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,7 +52,7 @@ public class ConsultasPorRubro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +98,16 @@ public class ConsultasPorRubro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcRubro;
+    private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera(){
+modelo.addColumn("Codigo");
+modelo.addColumn("Descripcion");
+modelo.addColumn("Precio");
+modelo.addColumn("Stoock");
+
+jtProductos.setModel(modelo);
+}
 }

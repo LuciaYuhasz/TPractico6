@@ -7,10 +7,13 @@ package tpractico6;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Usuario
- */
+
+import javax.swing.table.DefaultTableModel;
+
+import tpractico6.Producto;
+
+
+
 public class ConsultasPorRubro extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo= new DefaultTableModel();
     

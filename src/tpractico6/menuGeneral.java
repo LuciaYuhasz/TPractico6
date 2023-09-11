@@ -134,7 +134,7 @@ public class menuGeneral extends javax.swing.JFrame {
     private void jmPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPorNombreActionPerformed
     escritorio.removeAll();
     escritorio.repaint();
-    ConsultasPorRubro gdp=new ConsultasPorRubro();
+    PorNombre gdp=new PorNombre();
     gdp.setVisible(true);
     escritorio.add(gdp);
     escritorio.moveToFront(gdp);

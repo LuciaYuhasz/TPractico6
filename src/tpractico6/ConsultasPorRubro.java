@@ -13,9 +13,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultasPorRubro extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo= new DefaultTableModel();
-    public ConsultasPorRubro() {
+    
+
+public ConsultasPorRubro() {
         initComponents();
-        armarCabecera();
+         String ids [] = {"Codigo" , "Descripcion", "Precio", "Stock"};
+        modelo.setColumnIdentifiers(ids);
+        jtProductos.setModel(modelo);
+        
+        
+        
+        
+        //armarCabecera();
     }
 
     /**
@@ -40,6 +49,11 @@ private DefaultTableModel modelo= new DefaultTableModel();
         jLabel2.setText("Elige el Rubro");
 
         jcRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
+        jcRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcRubroActionPerformed(evt);
+            }
+        });
 
         jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,12 +107,28 @@ private DefaultTableModel modelo= new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcRubroActionPerformed
+          Producto encontrado = (Producto) jcRubro.getSelectedItem();
+        borrarFilas();
+        for (Producto encontrar : menuGeneral.lista) {
+
+            if (encontrar.getRubro().equals(encontrado)) {
+
+                modelo.addRow(new Object[]{encontrar.getCodigo(), encontrar.getDescripcion(), encontrar.getPrecio(), encontrar.getStoock()});
+
+            }
+        
+        
+    }                                       
+    
+    }//GEN-LAST:event_jcRubroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcRubro;
+    private javax.swing.JComboBox<Producto> jcRubro;
     private javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
 
@@ -107,7 +137,13 @@ modelo.addColumn("Codigo");
 modelo.addColumn("Descripcion");
 modelo.addColumn("Precio");
 modelo.addColumn("Stoock");
-
-jtProductos.setModel(modelo);
 }
+
+ private void borrarFilas(){
+        int indice = modelo.getRowCount() -1;
+        
+        for (int i = indice;i>=0;i--){
+            modelo.removeRow(i);
+}
+ }
 }
